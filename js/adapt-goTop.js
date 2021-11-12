@@ -2,7 +2,7 @@ define([
   'core/js/adapt'
 ], function(Adapt) {
 
-  var goTopView = Backbone.View.extend({
+  const GoTopView = Backbone.View.extend({
 
     tagName: 'div',
     className: 'goTop',
@@ -13,14 +13,14 @@ define([
 
     initialize: function() {
       this.listenTo(Adapt, 'remove', this.remove);
-      var template = Handlebars.templates.goTop;
+      const template = Handlebars.templates.goTop;
       $('#wrapper').append(this.$el.html(template()));
       this.startScrollListener();
     },
 
     startScrollListener: function() {
       if (!Adapt.course.get('_goTop')._scrollListener._isEnabled) return;
-      var context = this;
+      const context = this;
       $(window).on('scroll.goTop', function() {
         context.checkIfBottom();
       });
@@ -31,7 +31,7 @@ define([
     },
 
     checkIfBottom: _.throttle(function() {
-      var viewportTop = $(window).scrollTop();
+      const viewportTop = $(window).scrollTop();
       if (viewportTop >= Adapt.course.get('_goTop')._scrollListener._offset) {
         $('.goTop').show();
       } else {
@@ -40,8 +40,9 @@ define([
     }, 100),
 
     goTop: function() {
-      var $page = $('.' + Adapt.location._currentId);
-      Adapt.scrollTo($page, {
+    //   const $page = $('.' + Adapt.location._currentId);
+    //   console.log($page)
+      Adapt.scrollTo(Adapt.location._currentId, {
         duration: 400
       });
     }
@@ -51,11 +52,11 @@ define([
     $(window).off('scroll.goTop');
   });
 
-  Adapt.on("pageView:ready", function() {
-    var model = Adapt.course.get('_goTop');
+  Adapt.on('pageView:ready', function() {
+    const model = Adapt.course.get('_goTop');
     if (!model || !model._isEnabled) return;
-    new goTopView();
+    new GoTopView();
   });
 
-  return goTopView;
+  return GoTopView;
 });

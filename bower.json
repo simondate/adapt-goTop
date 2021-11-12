@@ -1,8 +1,8 @@
 {
     "name": "adapt-goTop",
     "repository": "git://github.com/KingsOnline/adapt-goTop",
-    "framework": ">=2.0.0",
-    "version": "2.0.0",
+    "framework": ">=5",
+    "version": "2.1.0",
     "displayName": "Go top",
     "extension": "goTop",
     "description": "Button to jump to the top of the page",
