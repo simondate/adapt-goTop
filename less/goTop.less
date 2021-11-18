@@ -1,17 +1,15 @@
 button.goTop-button {
   position: fixed;
-  right: 50px;
-  bottom: 110px;
-  height: 40px;
-  width: 40px;
-  min-height: 40px;
-  min-width: 40px;
   z-index: 10;
-  padding: 0;
-  color: @white;
-  background-color: @nav;
+  right: 2rem;
+  bottom: 4rem;
+  padding: 1rem;
+  border-radius: 50%;
+  color: @nav-icon-inverted;
+  background-color: @nav-icon;
 
   .no-touch &:hover {
-    background-color: darken(@nav, 10%);
+    color: @nav-icon-inverted-hover;
+    background-color: @nav-icon-hover;
   }
 }
